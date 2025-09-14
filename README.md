@@ -24,7 +24,7 @@ A full-featured SaaS application built during the Full Stack Club Bootcamp, desi
 ```bash
 # Clone the repo
 git clone https://github.com/sergiobtos/barber-saas-bootcamp.git
-cd barberhub-saas
+cd barber-saas-bootcamp
 
 # Install backend dependencies
 cd backend
