@@ -4,20 +4,20 @@ A full-featured SaaS application built during the Full Stack Club Bootcamp, desi
 
 ## 🚀 Features
 
-- 🧑‍💼 Google OAuth login  
-- 📅 Barber appointment scheduling  
-- 🏪 Admin dashboard for barbershop management  
-- 💳 Payment gateway integration  
-- 🌐 Full deployment with Node.js and MongoDB  
-- 🔐 Secure authentication and session handling  
+- 🧑‍💼 Google OAuth login
+- 📅 Barber appointment scheduling
+- 🏪 Admin dashboard for barbershop management
+- 💳 Payment gateway integration
+- 🌐 Full deployment with Node.js and MongoDB
+- 🔐 Secure authentication and session handling
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js, Tailwind CSS  
-- **Backend**: Node.js, Express.js  
-- **Database**: MongoDB with Mongoose  
-- **Authentication**: Google OAuth 2.0  
-- **Deployment**: Vercel (frontend) & Render (backend)  
+- **Frontend**: React.js, Tailwind CSS
+- **Backend**: Node.js, Express.js
+- **Database**: SQL lite with Neon DB
+- **Authentication**:
+- **Deployment**: Vercel
 
 ## 📦 Installation
 
@@ -36,10 +36,7 @@ npm install
 ⚙️ Configuration
 Create a .env file in both backend and frontend folders with the following variables:
 # Backend .env
-MONGO_URI=your_mongodb_connection_string
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-SESSION_SECRET=your_session_secret
+DATABASE_URL=your_postgresql_connection_string
 
 # Frontend .env
 NEXT_PUBLIC_API_URL=http://localhost:5000
@@ -58,3 +55,4 @@ This project is based on the Full Stack Club Bootcamp Node.js module (data-url="
 
 📄 License
 This project is licensed under the MIT License.
+```
