@@ -8,10 +8,10 @@ import { SearchIcon } from "lucide-react"
 import { Card, CardContent } from "./_components/ui/card"
 import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
+import { db } from "./_lib/prisma"
+import BarberShopItem from "./_components/barbershop-item"
 //import Link from "next/link"
 /* 
-import { db } from "./_lib/prisma"
-import BarbershopItem from "./_components/barbershop-item"
 import { quickSearchOptions } from "./_constants/search"
 import BookingItem from "./_components/booking-item"
 import Search from "./_components/search"
@@ -20,8 +20,9 @@ import { authOptions } from "./_lib/auth"
 import { getConfirmedBookings } from "./_data/get-confirmed-bookings" */
 
 const Home = async () => {
-  /*  const session = await getServerSession(authOptions)
   const barbershops = await db.barbershop.findMany({})
+
+  /*  const session = await getServerSession(authOptions)
   const popularBarbershops = await db.barbershop.findMany({
     orderBy: {
       name: "desc",
@@ -87,6 +88,22 @@ const Home = async () => {
             </div>
           </CardContent>
         </Card>
+
+        <h2 className="m-6 mb-3 text-xs font-bold uppercase text-gray-400">
+          Recomendados
+        </h2>
+
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop) => (
+            <div key={barbershop.id}>
+              <BarberShopItem barbershop={barbershop} />
+            </div>
+          ))}
+        </div>
+
+        <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
+          Populares
+        </h2>
       </div>
     </div>
   )
