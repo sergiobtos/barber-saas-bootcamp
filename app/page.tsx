@@ -21,14 +21,15 @@ import { getConfirmedBookings } from "./_data/get-confirmed-bookings" */
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
-
-  /*  const session = await getServerSession(authOptions)
   const popularBarbershops = await db.barbershop.findMany({
     orderBy: {
       name: "desc",
     },
   })
-  const confirmedBookings = await getConfirmedBookings() */
+
+  /*  const session = await getServerSession(authOptions)
+  const confirmedBookings = await getConfirmedBookings() 
+  */
 
   return (
     <div>
@@ -49,10 +50,34 @@ const Home = async () => {
           </span>
         </p>
 
+        {/* PESQUISA */}
         <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faca sua pesquisa..." />
           <Button>
             <SearchIcon />
+          </Button>
+        </div>
+
+        {/* PESQUISA RÁPIDA */}
+        <div className="flex gap-3">
+          <Button className="gap-2" variant="secondary">
+            <Image src={"/cabelo.svg"} alt="Cabelo" width={16} height={16} />
+            Cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src={"/barba.svg"} alt="Barba" width={16} height={16} />
+            Barba
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src={"/acabamento.svg"}
+              alt="Acabamento"
+              width={16}
+              height={16}
+            />
+            Acabamento
           </Button>
         </div>
 
@@ -104,7 +129,26 @@ const Home = async () => {
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Populares
         </h2>
+
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {popularBarbershops.map((barbershop) => (
+            <div key={barbershop.id}>
+              <BarberShopItem barbershop={barbershop} />
+            </div>
+          ))}
+        </div>
       </div>
+
+      <footer>
+        <Card>
+          <CardContent className="px-5 py-6">
+            <p className="text-sm text-gray-400">
+              © Copyrights <span className="font-bold">SMS</span> Barbershop
+              2025
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   )
 }
