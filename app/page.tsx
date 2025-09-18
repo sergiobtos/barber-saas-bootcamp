@@ -10,10 +10,10 @@ import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarberShopItem from "./_components/barbershop-item"
-//import Link from "next/link"
-/* 
-import { quickSearchOptions } from "./_constants/search"
+import { quickSearchOptions, IQuickSearchOption } from "./_constants/search"
+import Link from "next/link"
 import BookingItem from "./_components/booking-item"
+/* 
 import Search from "./_components/search"
 import { getServerSession } from "next-auth"
 import { authOptions } from "./_lib/auth"
@@ -59,28 +59,28 @@ const Home = async () => {
         </div>
 
         {/* PESQUISA RÁPIDA */}
-        <div className="flex gap-3">
-          <Button className="gap-2" variant="secondary">
-            <Image src={"/cabelo.svg"} alt="Cabelo" width={16} height={16} />
-            Cabelo
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image src={"/barba.svg"} alt="Barba" width={16} height={16} />
-            Barba
-          </Button>
-
-          <Button className="gap-2" variant="secondary">
-            <Image
-              src={"/acabamento.svg"}
-              alt="Acabamento"
-              width={16}
-              height={16}
-            />
-            Acabamento
-          </Button>
+        <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
+          {quickSearchOptions.map((option: IQuickSearchOption) => (
+            <Button
+              className="gap-2"
+              variant="secondary"
+              key={option.title}
+              asChild
+            >
+              <Link href={`/barbershops?service=${option.title}`}>
+                <Image
+                  src={option.imageUrl}
+                  width={16}
+                  height={16}
+                  alt={option.title}
+                />
+                {option.title}
+              </Link>
+            </Button>
+          ))}
         </div>
 
+        {/* IMAGEM */}
         <div className="relative h-[150px] w-full">
           <Image
             alt="Banner"
@@ -94,25 +94,15 @@ const Home = async () => {
           Agendamentos
         </h2>
 
-        <Card>
-          <CardContent className="flex justify-between p-0">
-            <div className="flex flex-col gap-2 py-5 pl-5">
-              <Badge className="w-fit">Confirmado</Badge>
-              <h3 className="font-semibold">Corte de cabelo</h3>
-              <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src="/avatar.png" />
-                </Avatar>
-                <p className="text-sm">Barbearia</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center border-l-2 border-solid px-5">
-              <p className="text-sm">Agosto</p>
-              <p className="text-2xl">05</p>
-              <p className="text-sm">14:00</p>
-            </div>
-          </CardContent>
-        </Card>
+        {/* AGENDAMENTO */}
+        <div className="flex gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {confirmedBookings.map((booking) => (
+            <BookingItem
+              key={booking.id}
+              booking={JSON.parse(JSON.stringify(booking))}
+            />
+          ))}
+        </div>
 
         <h2 className="m-6 mb-3 text-xs font-bold uppercase text-gray-400">
           Recomendados
