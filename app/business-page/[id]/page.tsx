@@ -6,6 +6,7 @@ import { Button } from "@/app/_components/ui/button"
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Link from "next/link"
 import ServiceItem from "@/app/_components/service-item"
+import PhoneItem from "@/app/_components/phone-item"
 
 interface IBusinessPageProps {
   params: {
@@ -76,6 +77,7 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
         </Button>
       </div>
 
+      {/* BUSINESS INFO */}
       <div className="border-b border-solid p-5">
         <h1 className="mb-3 text-xl font-bold">{business?.name}</h1>
         <div className="mb-2 flex items-center gap-2">
@@ -94,7 +96,8 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
         <p className="text-justify text-sm">{business.description}</p>
       </div>
 
-      <div className="space-y-3 p-5">
+      {/* SERVICES */}
+      <div className="space-y-3 border-b border-solid p-5">
         <h2 className="mb-3 text-xs font-bold uppercase text-gray-400">
           Services
         </h2>
@@ -107,6 +110,13 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
             />
           ))}
         </div>
+      </div>
+
+      {/* CONTACT */}
+      <div className="space-y-3 p-5">
+        {business.phones.map((phone) => (
+          <PhoneItem key={phone} phone={phone} />
+        ))}
       </div>
     </div>
   )

@@ -115,6 +115,7 @@ const Home = async () => {
           ))}
         </div>
 
+        {/* POPULAR */}
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Populares
         </h2>
@@ -127,17 +128,6 @@ const Home = async () => {
           ))}
         </div>
       </div>
-
-      <footer>
-        <Card>
-          <CardContent className="px-5 py-6">
-            <p className="text-sm text-gray-400">
-              © Copyrights <span className="font-bold">SMS</span> Barbershop
-              2025
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   )
 }
