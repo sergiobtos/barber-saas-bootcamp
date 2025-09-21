@@ -2,22 +2,16 @@ import Header from "./_components/header"
 import Image from "next/image"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { Input } from "./_components/ui/input"
 import { Button } from "./_components/ui/button"
-import { SearchIcon } from "lucide-react"
-//import { Card, CardContent } from "./_components/ui/card"
-//import { Badge } from "./_components/ui/badge"
-//import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarberShopItem from "./_components/barbershop-item"
 import { quickSearchOptions, IQuickSearchOption } from "./_constants/search"
 import Link from "next/link"
 import BookingItem from "./_components/booking-item"
 import { getConfirmedBookings } from "./_data/get-confirmed-bookings"
-/* 
-import Search from "./_components/search" */
 import { getServerSession } from "next-auth"
 import { authOptions } from "./_lib/auth"
+import Search from "./_components/search"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -49,12 +43,9 @@ const Home = async () => {
           </span>
         </p>
 
-        {/* PESQUISA */}
-        <div className="mt-6 flex items-center gap-2">
-          <Input placeholder="Faca sua pesquisa..." />
-          <Button>
-            <SearchIcon />
-          </Button>
+        {/* SEARCH */}
+        <div className="mt-6">
+          <Search />
         </div>
 
         {/* PESQUISA RÁPIDA */}
