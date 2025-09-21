@@ -13,11 +13,11 @@ import BarberShopItem from "./_components/barbershop-item"
 import { quickSearchOptions, IQuickSearchOption } from "./_constants/search"
 import Link from "next/link"
 import BookingItem from "./_components/booking-item"
+import { getConfirmedBookings } from "./_data/get-confirmed-bookings"
 /* 
 import Search from "./_components/search"
 import { getServerSession } from "next-auth"
-import { authOptions } from "./_lib/auth"
-import { getConfirmedBookings } from "./_data/get-confirmed-bookings" */
+import { authOptions } from "./_lib/auth" */
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -27,9 +27,8 @@ const Home = async () => {
     },
   })
 
-  /*  const session = await getServerSession(authOptions)
-  const confirmedBookings = await getConfirmedBookings() 
-  */
+  //const session = await getServerSession(authOptions)
+  const confirmedBookings = await getConfirmedBookings()
 
   return (
     <div>
