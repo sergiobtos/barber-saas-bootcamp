@@ -48,7 +48,7 @@ const Home = async () => {
           <Search />
         </div>
 
-        {/* PESQUISA RÁPIDA */}
+        {/* QUICK SEARCH */}
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map((option: IQuickSearchOption) => (
             <Button
@@ -57,7 +57,7 @@ const Home = async () => {
               key={option.title}
               asChild
             >
-              <Link href={`/barbershops?service=${option.title}`}>
+              <Link href={`/business-page?service=${option.title}`}>
                 <Image
                   src={option.imageUrl}
                   width={16}
