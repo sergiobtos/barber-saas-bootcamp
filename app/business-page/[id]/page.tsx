@@ -7,6 +7,8 @@ import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Link from "next/link"
 import ServiceItem from "@/app/_components/service-item"
 import PhoneItem from "@/app/_components/phone-item"
+import SidebarSheet from "@/app/_components/sidebar-sheet"
+import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
 
 interface IBusinessPageProps {
   params: {
@@ -67,14 +69,18 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
           </Link>
         </Button>
 
-        <Button
-          size="icon"
-          variant="secondary"
-          className="absolute right-4 top-4"
-          asChild
-        >
-          <MenuIcon />
-        </Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute right-4 top-4"
+            >
+              <MenuIcon />
+            </Button>
+          </SheetTrigger>
+          <SidebarSheet />
+        </Sheet>
       </div>
 
       {/* BUSINESS INFO */}
