@@ -5,9 +5,9 @@ import { ptBR } from "date-fns/locale"
 import { Input } from "./_components/ui/input"
 import { Button } from "./_components/ui/button"
 import { SearchIcon } from "lucide-react"
-import { Card, CardContent } from "./_components/ui/card"
-import { Badge } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
+//import { Card, CardContent } from "./_components/ui/card"
+//import { Badge } from "./_components/ui/badge"
+//import { Avatar, AvatarImage } from "./_components/ui/avatar"
 import { db } from "./_lib/prisma"
 import BarberShopItem from "./_components/barbershop-item"
 import { quickSearchOptions, IQuickSearchOption } from "./_constants/search"
@@ -15,9 +15,9 @@ import Link from "next/link"
 import BookingItem from "./_components/booking-item"
 import { getConfirmedBookings } from "./_data/get-confirmed-bookings"
 /* 
-import Search from "./_components/search"
+import Search from "./_components/search" */
 import { getServerSession } from "next-auth"
-import { authOptions } from "./_lib/auth" */
+import { authOptions } from "./_lib/auth"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -27,7 +27,7 @@ const Home = async () => {
     },
   })
 
-  //const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions)
   const confirmedBookings = await getConfirmedBookings()
 
   return (
@@ -37,7 +37,7 @@ const Home = async () => {
       <div className="p-5">
         {/* TEXTO */}
         <h2 className="text-xl font-bold">
-          {/* Olá, {session?.user ? session.user.name : "bem vindo"}! */}Olá!
+          Olá, {session?.user ? session.user.name : "bem vindo"}!
         </h2>
         <p>
           <span className="capitalize">
