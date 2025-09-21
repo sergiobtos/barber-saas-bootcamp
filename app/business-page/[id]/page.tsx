@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import { Metadata } from "next"
 import { Button } from "@/app/_components/ui/button"
-import { ChevronLeftIcon, MenuIcon } from "lucide-react"
+import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Link from "next/link"
 
 interface IBusinessPageProps {
@@ -75,14 +75,22 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
         </Button>
       </div>
 
-      <div>
-        <h1 className="text-xl font-bold">{business.name}</h1>
-        <p className="text-sm text-gray-400">{business.address}</p>
+      <div className="border-b border-solid p-5">
+        <h1 className="mb-3 text-xl font-bold">{business?.name}</h1>
+        <div className="mb-2 flex items-center gap-1">
+          <MapPinIcon className="text-primary" size={18} />
+          <p className="text-sm">{business?.address}</p>
+        </div>
+        <div className="flex items-center gap-1">
+          <StarIcon className="fill-primary text-primary" size={18} />
+          <p className="text-sm">5.0 (999 reviews)</p>
+        </div>
       </div>
 
-      <div className="mt-3">
-        <h2 className="text-lg font-bold">About Us</h2>
-        <p className="text-sm text-gray-400">{business.description}</p>
+      {/* ABOUT US */}
+      <div className="space-y-2 border-b border-solid p-5">
+        <h2 className="text-xs font-bold uppercase text-gray-400">About Us</h2>
+        <p className="text-justify text-sm">{business.description}</p>
       </div>
 
       <div className="mt-3">
