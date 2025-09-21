@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import { Button } from "@/app/_components/ui/button"
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
 import Link from "next/link"
+import ServiceItem from "@/app/_components/service-item"
 
 interface IBusinessPageProps {
   params: {
@@ -43,7 +44,7 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 p-5">
+    <div>
       {/* IMAGE */}
       <div className="relative h-[250px] w-full">
         <Image
@@ -77,11 +78,11 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
 
       <div className="border-b border-solid p-5">
         <h1 className="mb-3 text-xl font-bold">{business?.name}</h1>
-        <div className="mb-2 flex items-center gap-1">
+        <div className="mb-2 flex items-center gap-2">
           <MapPinIcon className="text-primary" size={18} />
           <p className="text-sm">{business?.address}</p>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
           <StarIcon className="fill-primary text-primary" size={18} />
           <p className="text-sm">5.0 (999 reviews)</p>
         </div>
@@ -93,27 +94,17 @@ const BusinessPage = async ({ params }: IBusinessPageProps) => {
         <p className="text-justify text-sm">{business.description}</p>
       </div>
 
-      <div className="mt-3">
-        <h2 className="text-lg font-bold">Services</h2>
-        <div className="mt-3 flex flex-col gap-3">
+      <div className="space-y-3 p-5">
+        <h2 className="mb-3 text-xs font-bold uppercase text-gray-400">
+          Services
+        </h2>
+        <div className="space-y-3">
           {business.services.map((service) => (
-            <div
+            <ServiceItem
               key={service.id}
-              className="flex items-center justify-between rounded-lg border border-solid border-gray-300 px-5 py-3"
-            >
-              <div className="flex flex-col gap-1">
-                <h3 className="font-medium">{service.name}</h3>
-                <p className="text-sm text-gray-400">{service.description}</p>
-              </div>
-              <div className="flex flex-col items-end gap-1">
-                <p className="text-sm font-medium">
-                  ${Number(service.price).toFixed(2)}
-                </p>
-                <button className="rounded-full bg-primary px-3 py-2 text-xs font-bold text-white">
-                  Book Now
-                </button>
-              </div>
-            </div>
+              service={service}
+              barbershop={business}
+            />
           ))}
         </div>
       </div>
