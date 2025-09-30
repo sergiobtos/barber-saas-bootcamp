@@ -14,10 +14,15 @@ A full-featured SaaS application built during the Full Stack Club Bootcamp, desi
 ## 🛠️ Tech Stack
 
 - **Frontend**: React.js, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: SQL lite with Neon DB
+- **Database**: Postgres with Neon DB and Prism ORM
 - **Authentication**:
 - **Deployment**: Vercel
+
+## Prism Set up
+
+- npm install prism --save-dev
+- npx prism init --datasource-provider postgresql
+- go to https://neon.com/ to create DB
 
 ## 📦 Installation
 
@@ -26,28 +31,17 @@ A full-featured SaaS application built during the Full Stack Club Bootcamp, desi
 git clone https://github.com/sergiobtos/barber-saas-bootcamp.git
 cd barber-saas-bootcamp
 
-# Install backend dependencies
-cd backend
+# Install dependencies
 npm install
 
-# Install frontend dependencies
-cd ../frontend
-npm install
 ⚙️ Configuration
-Create a .env file in both backend and frontend folders with the following variables:
-# Backend .env
-DATABASE_URL=your_postgresql_connection_string
+Create a .env file in the project folder with the following variables:
 
-# Frontend .env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+DATABASE_URL=postgresql://neondb_owner:********************************/neondb
+
 
 🧪 Running Locally
-# Start backend
-cd backend
-npm run dev
-
-# Start frontend
-cd ../frontend
+# Start
 npm run dev
 
 📚 Learning Reference
