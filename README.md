@@ -20,9 +20,24 @@ A full-featured SaaS application built during the Full Stack Club Bootcamp, desi
 
 ## Prism Set up
 
-- npm install prism --save-dev
-- npx prism init --datasource-provider postgresql
+- npm install prisma --save-dev
+- npx prisma init --datasource-provider postgresql
 - go to https://neon.com/ to create DB
+- npx prisma format
+- npx prisma migrate dev --name init_db
+- create prisma seed script
+  "prisma": {
+  "seed": "ts-node prisma/seed.ts"
+  }
+- npx prisma db seed
+- npx prisma studio
+- install PrismaAdapter to work with Google next auth
+
+## Login with Google Set up
+
+- Go to [url](https://console.developers.google.com/) and get the google id and secret
+-
+-
 
 ## 📦 Installation
 
@@ -38,6 +53,9 @@ npm install
 Create a .env file in the project folder with the following variables:
 
 DATABASE_URL=postgresql://neondb_owner:********************************/neondb
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXT_AUTH_SECRET=
 
 
 🧪 Running Locally
