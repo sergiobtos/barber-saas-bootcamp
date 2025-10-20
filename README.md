@@ -36,7 +36,8 @@ A full-featured SaaS application built during the Full Stack Club Bootcamp, desi
 ## Login with Google Set up
 
 - Go to [url](https://console.developers.google.com/) and get the google id and secret
--
+- Go to [url](https://next-auth.js.org/getting-started/example) and install this library
+- Create file: /app/api/auth/[...nextauth]/route.ts using this [url](https://next-auth.js.org/configuration/initialization#route-handlers-app)
 -
 
 ## 📦 Installation
