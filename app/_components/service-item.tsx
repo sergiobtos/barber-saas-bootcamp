@@ -136,11 +136,19 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
   const handleCreateBooking = async () => {
     try {
       if (!selectedDate) return
+
+      const hours = Number(selectedTime?.split(":")[0])
+      const minutes = Number(selectedTime?.split(":")[1])
+      const updatedDate = set(selectedDate, { minutes, hours })
+
       await createBooking({
+        userId: "123456",
         serviceId: service.id,
-        date: selectedDate,
+        date: updatedDate,
       })
+
       handleBookingSheetOpenChange()
+
       toast.success("Reserva criada com sucesso!", {
         action: {
           label: "Ver agendamentos",
