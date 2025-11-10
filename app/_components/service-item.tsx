@@ -174,11 +174,11 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
               className="rounded-lg object-cover"
             />
           </div>
-          {/* RIGHT */}
+          {/* DIREITA */}
           <div className="space-y-2">
             <h3 className="text-sm font-semibold">{service.name}</h3>
             <p className="text-sm text-gray-400">{service.description}</p>
-            {/* PRICE AND BUTTON */}
+            {/* PREÇO E BOTÃO */}
             <div className="flex items-center justify-between">
               <p className="text-sm font-bold text-primary">
                 {Intl.NumberFormat("pt-BR", {
@@ -210,8 +210,7 @@ const ServiceItem = ({ service, barbershop }: ServiceItemProps) => {
                       locale={ptBR}
                       selected={selectedDay}
                       onSelect={handleDateSelect}
-                      hidden={{ before: new Date() }}
-                      disabled={{ before: new Date() }}
+                      fromDate={new Date()}
                       styles={{
                         head_cell: {
                           width: "100%",
